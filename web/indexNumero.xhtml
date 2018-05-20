@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Facelet Title</title>
+    </head>
+    <body>
+        <p:panel id="test" header="Punto02" footer="2018">
+            <h:form id="frmNumeros">
+                <p:panelGrid id="pnlNumeros" columns="3">
+                    <p:outputLabel id="lblNumero" value="Ingrese un Número:"/>
+                    <p:inputNumber id="txtNumero" value="#{p02FormBean1.n}"/>
+                    <p:commandButton id="btnAgregar" update="tblListadoNumeros" 
+                                     actionListener="#{p02FormBean1.recibirN()}" value="Agregar"/>
+                   
+                    <p:commandButton id="btnCalcularM" actionListener="#{p02FormBean1.calcular()}" 
+                                     value="Mayor" update="valorMayor"/>
+                    <p:commandButton id="btnCalcularm" actionListener="#{p02FormBean1calcular()}" 
+                                     value="Menor" update="valorMenor"/>
+                    <p:commandButton id="btnCalcularP" actionListener="#{p02FormBean1.calcular()}" 
+                                     value="Calcular Promedio" update="ValorPromedio"/>
+
+                    <p:outputLabel id="valorMayor" value="#{p02FormBean1.max}"/>
+                 
+                    <p:outputLabel id="valorMenor" value="#{p02FormBean1.min}"/>
+                    
+                    <p:outputLabel id="ValorPromedio" value="#{p02FormBean1.prom}"  />
+                  
+                </p:panelGrid>
+                <p:panelGrid id="tblListadoNumeros" columns="2">
+                    <p:dataTable id="dtbNumeros" value="#{p02FormBean1.arreglo}" 
+                                 var="numero" emptyMessage="No hay Números">
+                        <p:column headerText="Números">
+                            <p:outputLabel value="#{numero}"/>
+     
+                        </p:column>
+                    </p:dataTable>
+                </p:panelGrid>
+            </h:form>
+        </p:panel>
+    </body>
+</html>
